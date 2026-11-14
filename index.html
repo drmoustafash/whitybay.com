@@ -29,24 +29,19 @@ html{scroll-behavior:smooth}
 a{color:#1F4E8C}a:hover{color:#163B6B}
 .vd-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 @media(max-width:800px){.vd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.pt-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-@media(max-width:800px){.pt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.sea-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:8px}
-.sea-grid img:first-child{grid-row:span 2}
-@media(max-width:700px){.sea-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 130px 130px}.sea-grid img:first-child{grid-row:auto;grid-column:span 2}}
 .slides{position:absolute;inset:0;overflow:hidden;z-index:0}
 .slides span{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:wbfade 30s infinite}
 .slides span:nth-child(2){animation-delay:6s}.slides span:nth-child(3){animation-delay:12s}.slides span:nth-child(4){animation-delay:18s}.slides span:nth-child(5){animation-delay:24s}
 .slides::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,42,58,.84),rgba(11,42,58,.78))}
 @keyframes wbfade{0%{opacity:0}8%{opacity:1}24%{opacity:1}32%{opacity:0}100%{opacity:0}}
-.ba{position:relative;overflow:hidden;border-radius:16px;background:#0B2A3A;user-select:none;-webkit-user-select:none;touch-action:pan-y}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.ba .ba-after{clip-path:inset(0 0 0 var(--p))}
-.ba-line{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#FFFFFF;pointer-events:none}
-.ba-knob{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#FFFFFF;color:#0B2A3A;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.35)}
-.ba-tag{position:absolute;top:12px;padding:5px 12px;border-radius:999px;background:rgba(11,42,58,.82);color:#FFFFFF;font-size:13px;font-weight:600;pointer-events:none}
-.ba-r{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
-.ba:focus-within .ba-knob{outline:3px solid #F2C879;outline-offset:2px}
+.ba{position:relative;width:100%;min-width:0;overflow:hidden;border-radius:18px;background:#0B2A3A}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:opacity .45s}
+.ba img.ba-blur{object-fit:cover;filter:blur(22px) brightness(.8) saturate(1.1);transform:scale(1.2)}
+.ba[data-state="after"] .ba-before,.ba[data-state="before"] .ba-after{opacity:0}
+.ba-switch{position:absolute;bottom:12px;inset-inline-start:12px;display:flex;background:rgba(11,42,58,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:3px}
+.ba-switch button{border:0;background:transparent;color:#D5E4E8;font:inherit;font-size:14px;font-weight:600;min-height:36px;padding:0 16px;border-radius:999px;cursor:pointer}
+.ba-switch button.on{background:#FFFFFF;color:#0B2A3A}
+.ba-switch button:focus-visible{outline:3px solid #F2C879;outline-offset:2px}
 .faq{background:#FFFFFF;border:1px solid #DCE7EA;border-radius:14px;padding:0 22px}
 .faq summary{cursor:pointer;padding:18px 0;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
@@ -63,9 +58,50 @@ a{color:#1F4E8C}a:hover{color:#163B6B}
 .wf-f input,.wf-f textarea{box-sizing:border-box;width:100%;min-height:46px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#FFFFFF;font:inherit;font-size:16px}
 .wf-f textarea{min-height:76px;resize:vertical}
 .wf-f input:focus,.wf-f textarea:focus{outline:3px solid #F2C879;outline-offset:1px}
-@media(prefers-reduced-motion:reduce){.slides span{animation:none}.slides span:first-child{opacity:1}}
+.tx-art{display:block;height:150px;border-radius:12px;background:linear-gradient(180deg,#EEF4FB,#DFEAF6);margin-bottom:6px;overflow:hidden}
+.tx-art svg{display:block;width:100%;height:100%}
+.tx-art svg *{transform-box:fill-box;transform-origin:center}
+.tx-v-shell{animation:txV 4s ease-in-out infinite}
+@keyframes txV{0%,12%{transform:translateY(-95px);opacity:0}40%,86%{transform:none;opacity:1}100%{transform:none;opacity:0}}
+.tx-i-screw{animation:txIs 5s ease-in-out infinite}
+@keyframes txIs{0%{transform:translateY(-70px) rotate(-8deg);opacity:0}8%{opacity:1}34%,88%{transform:none;opacity:1}100%{transform:none;opacity:0}}
+.tx-i-crown{animation:txIc 5s ease-in-out infinite}
+@keyframes txIc{0%,38%{transform:translateY(-90px);opacity:0}60%,88%{transform:none;opacity:1}100%{transform:none;opacity:0}}
+.tx-a-mid{animation:txAm 5s ease-in-out infinite}
+@keyframes txAm{0%,32%{transform:translate(3px,7px) rotate(14deg)}66%,92%{transform:none}100%{transform:translate(3px,7px) rotate(14deg)}}
+.tx-a-tray{animation:txAt 5s ease-in-out infinite}
+@keyframes txAt{0%{transform:translateY(-80px);opacity:0}26%,84%{transform:none;opacity:1}96%,100%{transform:translateY(-80px);opacity:0}}
+.tx-w-tooth{animation:txW 4s ease-in-out infinite}
+@keyframes txW{0%,18%{fill:#E6CF8E}52%,88%{fill:#FFFFFF}100%{fill:#E6CF8E}}
+.tx-w-s1,.tx-w-s2,.tx-w-s3{animation:txS 4s ease-in-out infinite;transform:scale(0)}
+.tx-w-s2{animation-delay:.25s}.tx-w-s3{animation-delay:.5s}
+@keyframes txS{0%,48%{transform:scale(0)}60%{transform:scale(1.15)}70%{transform:scale(.9)}80%{transform:scale(0)}100%{transform:scale(0)}}
+.tx-r-canal{stroke-dasharray:100;animation:txRc 5s ease-in-out infinite}
+@keyframes txRc{0%,12%{stroke-dashoffset:100}48%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+.tx-r-cav{animation:txRv 5s ease-in-out infinite}
+@keyframes txRv{0%,52%{fill:#5B3A2A;stroke:#5B3A2A}70%,90%{fill:#9CC4EA;stroke:#1F4E8C}100%{fill:#5B3A2A;stroke:#5B3A2A}}
+.tx-c-cap{animation:txC 4s ease-in-out infinite}
+@keyframes txC{0%,14%{transform:translateY(-95px);opacity:0}42%,86%{transform:none;opacity:1}100%{transform:none;opacity:0}}
+.tx-k-brush{animation:txKb 4s ease-in-out infinite}
+@keyframes txKb{0%{transform:translateX(-120px)}50%{transform:translateX(70px)}62%,100%{transform:translateX(140px)}}
+.tx-k-dot{animation:txKd 4s linear infinite}
+@keyframes txKd{0%,22%{opacity:1}30%,92%{opacity:0}100%{opacity:1}}
+.tx-x-tooth{transform-origin:50% 100%;animation:txX 5s ease-in-out infinite}
+@keyframes txX{0%{transform:none;opacity:1}8%{transform:rotate(-6deg)}16%{transform:rotate(6deg)}24%{transform:rotate(-5deg)}32%{transform:none}62%{transform:translateY(-75px);opacity:0}63%,80%{transform:none;opacity:0}100%{transform:none;opacity:1}}
+.mq{overflow:hidden;border-radius:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.mq-track{display:flex;gap:18px;width:max-content;animation:mq 45s linear infinite}
+.mq-track img{flex:none;width:380px;height:270px;object-fit:cover;border-radius:16px;display:block}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(calc(-50% - 9px))}}
+.mq-long{animation-duration:72s;animation-direction:reverse}
+@media(max-width:600px){.mq-track img{width:260px;height:190px}.mq-track{animation-duration:32s}.mq-long{animation-duration:51s}}
+.hdr-logo{height:94px;filter:saturate(1.25) contrast(1.12)}
+header nav{order:3;flex-basis:100%;justify-content:center;border-top:1px solid #E8EFF2;column-gap:30px!important}
+header nav + div{margin-inline-start:auto}
+@media(max-width:600px){.hdr-logo{height:62px}header nav{column-gap:16px!important;font-size:14px!important}header nav a{padding:8px 0!important}header > div{column-gap:8px!important;padding-left:16px!important;padding-right:16px!important}header nav + div a{padding:8px 6px!important}header nav + div + a{display:none!important}}
+@media(prefers-reduced-motion:reduce){.mq{overflow-x:auto}.mq-track{animation:none}.tx-art svg *{animation:none!important}.ba img{transition:none}.slides span{animation:none}.slides span:first-child{opacity:1}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "WhityBay Digital Dental Center", "url": "https://whitybay.com/", "image": "https://whitybay.com/images/reception.jpg", "logo": "https://whitybay.com/images/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "El Nasr Street, El Dahar, above Anbar Pharmacy, 2nd floor", "addressLocality": "Hurghada", "addressRegion": "Red Sea", "addressCountry": "EG"}, "founder": {"@type": "Person", "name": "Dr. Moustafa Shaaban"}, "sameAs": ["https://www.facebook.com/whitybay/", "https://www.facebook.com/whitybayzahnklinik/", "https://www.tiktok.com/@drmoustafash", "https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "WhityBay Digital Dental Center", "url": "https://whitybay.com/", "image": "https://whitybay.com/images/reception.jpg", "logo": "https://whitybay.com/images/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "El Nasr Street, El Dahar, above Anbar Pharmacy, 2nd floor", "addressLocality": "Hurghada", "addressRegion": "Red Sea", "addressCountry": "EG"}, "founder": {"@type": "Person", "name": "Dr. Moustafa Shaaban"}, "sameAs": ["https://www.facebook.com/whitybay/", "https://www.tiktok.com/@drmoustafash", "https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you speak English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Dr. Moustafa and the team reply in English and Arabic, on WhatsApp and at the clinic."}}, {"@type": "Question", "name": "Can I be treated during a one- or two-week holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Whitening, cleaning, fillings and root canals usually take one or two visits. Veneers, crowns and implants need more visits, so send your dates first and Dr. Moustafa will tell you what fits."}}, {"@type": "Question", "name": "How do I get a price before I travel?", "acceptedAnswer": {"@type": "Answer", "text": "Send a photo of your smile or a recent X-ray on WhatsApp. You get a treatment plan and a price for your case."}}, {"@type": "Question", "name": "What if I get a toothache on holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Message us on WhatsApp with where it hurts and your hotel. We give you the earliest appointment we have."}}, {"@type": "Question", "name": "Where is the clinic?", "acceptedAnswer": {"@type": "Answer", "text": "In the city centre: El Nasr Street, El Dahar, 2nd floor above Anbar Pharmacy. Help with transfers is also possible."}}, {"@type": "Question", "name": "How do I book?", "acceptedAnswer": {"@type": "Answer", "text": "On WhatsApp only. Tap any green button or fill in the short form below, and we reply with a time."}}]}</script>
 </head>
 <body>
@@ -74,7 +110,7 @@ a{color:#1F4E8C}a:hover{color:#163B6B}
 <header style="background: #FFFFFF; border-bottom: 1px solid #DCE7EA">
 <div style="max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
 <a href="#top" style="display: flex; align-items: center; text-decoration: none">
-<img src="images/logo.png" alt="WhityBay Dental care &amp; Aesthetics" style="height: 64px; width: auto; display: block">
+<img src="images/logo.png" alt="WhityBay Dental care &amp; Aesthetics" class="hdr-logo" style="width: auto; display: block">
 </a>
 <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; font-size: 15px; font-weight: 500">
 <a href="#treatments" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Treatments</a>
@@ -118,19 +154,19 @@ Book on WhatsApp
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 16px 36px; margin-top: 18px; padding-top: 24px; border-top: 1px solid #24485A">
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px; color: #F2C879">5 / 5</span>
+<span data-count style="font-variant-numeric: tabular-nums; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px; color: #F2C879">5 / 5</span>
 <span style="font-size: 14px; color: #D5E4E8">from 207 patients on Vezeeta</span>
 </div>
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">13 years</span>
+<span data-count style="font-variant-numeric: tabular-nums; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">13 years</span>
 <span style="font-size: 14px; color: #D5E4E8">in practice</span>
 </div>
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">4,700+</span>
+<span data-count style="font-variant-numeric: tabular-nums; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">4,700+</span>
 <span style="font-size: 14px; color: #D5E4E8">treated cases</span>
 </div>
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">530</span>
+<span data-count style="font-variant-numeric: tabular-nums; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">530</span>
 <span style="font-size: 14px; color: #D5E4E8">courses &amp; trainings</span>
 </div>
 </div>
@@ -146,41 +182,49 @@ Book on WhatsApp
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 18px">
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20a%20Hollywood%20smile%20/%20veneers.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><path d="M101.0 98 L96.0 50 Q96.0 32 110.0 30 L130.0 30 Q144.0 32 144.0 50 L139.0 98 Z" fill="#E6CF8E" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><circle cx="108" cy="52" r="4" fill="#C9A86A"></circle><circle cx="132" cy="66" r="3" fill="#C9A86A"></circle><g class="tx-v-shell"><path d="M99.0 98 L94.0 48 Q94.0 30 108.0 28 L132.0 28 Q146.0 30 146.0 48 L141.0 98 Z" fill="#FFFFFF" stroke="#1F4E8C" stroke-width="2.5" stroke-linejoin="round"></path><path d="M104 40 Q106 34 112 33" fill="none" stroke="#9CC4EA" stroke-width="3" stroke-linecap="round"></path></g></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Hollywood smile &amp; veneers</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Planned with Digital Smile Design, so you see the result before treatment starts.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20dental%20implants.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><g class="tx-i-screw"><rect x="113" y="82" width="14" height="14" rx="2" fill="#B8C3CC" stroke="#0B2A3A" stroke-width="2"></rect><path d="M107 96 H133 L129 122 Q120 129 111 122 Z" fill="#B8C3CC" stroke="#0B2A3A" stroke-width="2" stroke-linejoin="round"></path><path d="M108 103 H132 M109 109 H131 M110 115 H130" stroke="#0B2A3A" stroke-width="1.6"></path></g><path class="tx-i-crown" d="M101.0 90 L96.0 58 Q96.0 40 110.0 38 L130.0 38 Q144.0 40 144.0 58 L139.0 90 Z" fill="#FFFFFF" stroke="#1F4E8C" stroke-width="2.5" stroke-linejoin="round"></path></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Dental implants</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Single implants up to a full fixed arch on four implants in place of loose dentures.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20clear%20aligners%20/%20braces.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><path d="M49.0 98 L44.0 50 Q44.0 32 58.0 30 L74.0 30 Q88.0 32 88.0 50 L83.0 98 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path d="M157.0 98 L152.0 50 Q152.0 32 166.0 30 L182.0 30 Q196.0 32 196.0 50 L191.0 98 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path class="tx-a-mid" d="M103.0 98 L98.0 50 Q98.0 32 112.0 30 L128.0 30 Q142.0 32 142.0 50 L137.0 98 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path class="tx-a-tray" d="M38 92 L36 42 Q36 22 56 22 L184 22 Q204 22 204 42 L202 92" fill="rgba(156,196,234,.32)" stroke="#5F9BD6" stroke-width="2.5" stroke-linejoin="round"></path></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Clear aligners &amp; braces</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">From the first certified clear-aligner orthodontist in Hurghada.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20teeth%20whitening.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><path class="tx-w-tooth" d="M101.0 98 L96.0 50 Q96.0 32 110.0 30 L130.0 30 Q144.0 32 144.0 50 L139.0 98 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path class="tx-w-s1" d="M160 26 Q160 36 170 36 Q160 36 160 46 Q160 36 150 36 Q160 36 160 26 Z" fill="#F2C879"></path><path class="tx-w-s2" d="M82 46 Q82 54 90 54 Q82 54 82 62 Q82 54 74 54 Q82 54 82 46 Z" fill="#F2C879"></path><path class="tx-w-s3" d="M152 68 Q152 74 158 74 Q152 74 152 80 Q152 74 146 74 Q152 74 152 68 Z" fill="#F2C879"></path></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Teeth whitening</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">A brighter smile in one visit. Easy to fit into a holiday.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20a%20root%20canal%20or%20filling.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M82 34 Q82 20 95 20 Q107 20 111 27 Q120 19 129 27 Q133 20 145 20 Q158 20 158 34 L154 64 Q152 72 147 74 L143 114 Q141 122 135 118 L129 84 Q120 79 111 84 L105 118 Q99 122 97 114 L93 74 Q88 72 86 64 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path d="M113 60 L101 110 M127 60 L139 110" stroke="#F0A0A0" stroke-width="5" stroke-linecap="round"></path><path class="tx-r-canal" d="M113 60 L101 110 M127 60 L139 110" stroke="#1F4E8C" stroke-width="5" stroke-linecap="round" fill="none" pathLength="100"></path><ellipse class="tx-r-cav" cx="132" cy="33" rx="11" ry="7" fill="#9CC4EA" stroke="#1F4E8C" stroke-width="2"></ellipse></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Root canal &amp; fillings</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Nerve pain, cavities and broken teeth treated and restored.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20crowns%2C%20bridges%20or%20dentures.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><path d="M104 98 L102 64 Q102 56 110 54 L130 54 Q138 56 138 64 L136 98 Z" fill="#E6CF8E" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><g class="tx-c-cap"><path d="M99.0 98 L94.0 50 Q94.0 32 108.0 30 L132.0 30 Q146.0 32 146.0 50 L141.0 98 Z" fill="#FFFFFF" stroke="#1F4E8C" stroke-width="2.5" stroke-linejoin="round"></path><path d="M104 42 Q106 36 112 35" fill="none" stroke="#9CC4EA" stroke-width="3" stroke-linecap="round"></path></g></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Crowns, bridges &amp; dentures</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Fixed and removable replacements for damaged or missing teeth.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20cleaning%20and%20gum%20care.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M0 98 Q60 88 120 94 T240 94 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 98 Q60 88 120 94 T240 94" fill="none" stroke="#E39595" stroke-width="2"></path><path d="M101.0 98 L96.0 50 Q96.0 32 110.0 30 L130.0 30 Q144.0 32 144.0 50 L139.0 98 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><circle class="tx-k-dot" style="animation-delay: 0.00s" cx="101" cy="90" r="5" fill="#C9A86A"></circle><circle class="tx-k-dot" style="animation-delay: 0.12s" cx="111" cy="93" r="4" fill="#C9A86A"></circle><circle class="tx-k-dot" style="animation-delay: 0.24s" cx="122" cy="91" r="5" fill="#C9A86A"></circle><circle class="tx-k-dot" style="animation-delay: 0.36s" cx="133" cy="93" r="4" fill="#C9A86A"></circle><circle class="tx-k-dot" style="animation-delay: 0.48s" cx="141" cy="89" r="4" fill="#C9A86A"></circle><g class="tx-k-brush"><rect x="146" y="70" width="80" height="8" rx="4" fill="#1F4E8C"></rect><rect x="104" y="66" width="46" height="14" rx="4" fill="#1F4E8C"></rect><path d="M108 80 V90 M114 80 V90 M120 80 V90 M126 80 V90 M132 80 V90 M138 80 V90 M144 80 V90" stroke="#9CC4EA" stroke-width="3" stroke-linecap="round"></path></g></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Cleaning &amp; gum care</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Scaling and polishing, plus treatment for bleeding gums and bad breath.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20ask%20about%20an%20extraction%20/%20wisdom%20tooth.%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="flex: 1 1 250px; min-width: 0; box-sizing: border-box; padding: 26px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE7EA; text-decoration: none; color: #0B2A3A; display: flex; flex-direction: column; gap: 10px">
+<span class="tx-art" aria-hidden="true"><svg viewBox="20 10 200 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path class="tx-x-tooth" d="M82 34 Q82 20 95 20 Q107 20 111 27 Q120 19 129 27 Q133 20 145 20 Q158 20 158 34 L154 64 Q152 72 147 74 L143 114 Q141 122 135 118 L129 84 Q120 79 111 84 L105 118 Q99 122 97 114 L93 74 Q88 72 86 64 Z" fill="#FFFFFF" stroke="#0B2A3A" stroke-width="2.5" stroke-linejoin="round"></path><path d="M0 82 Q60 72 120 78 T240 78 V130 H0 Z" fill="#F2B3B3"></path><path d="M0 82 Q60 72 120 78 T240 78" fill="none" stroke="#E39595" stroke-width="2"></path></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Extractions &amp; wisdom teeth</span>
 <span style="color: #4A6572; font-size: 15px; flex-grow: 1">Including abscesses and painful wisdom teeth.</span>
 <span style="color: #1F4E8C; font-weight: 600; font-size: 15px">Ask on WhatsApp →</span>
@@ -189,14 +233,7 @@ Book on WhatsApp
 </section>
 
 <section id="holiday" style="max-width: 1180px; margin: 0 auto; padding: 60px 24px">
-<div class="sea-grid" style="border-radius: 24px 24px 0 0; overflow: hidden">
-<img loading="lazy" src="images/hurghada-seafront.jpg" alt="Hurghada seafront seen through palm trees" style="width: 100%; height: 100%; min-width: 0; object-fit: cover; display: block">
-<img loading="lazy" src="images/hurghada-beach.jpg" alt="Two sunbeds on a Hurghada beach at sunset" style="width: 100%; height: 100%; min-width: 0; object-fit: cover; display: block">
-<img loading="lazy" src="images/red-sea-reef.jpg" alt="Colourful Red Sea coral reef with fish" style="width: 100%; height: 100%; min-width: 0; object-fit: cover; display: block">
-<img loading="lazy" src="images/red-sea-coral.jpg" alt="Coral reef and fish in the Red Sea" style="width: 100%; height: 100%; min-width: 0; object-fit: cover; display: block">
-<img loading="lazy" src="images/red-sea-boat.jpg" alt="Small boat on the calm blue Red Sea" style="width: 100%; height: 100%; min-width: 0; object-fit: cover; display: block">
-</div>
-<div style="background: #E6EEF8; border-radius: 0 0 24px 24px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 36px">
+<div style="background: #E6EEF8; border-radius: 24px; padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 36px">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 680px">
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Visiting Hurghada? Plan it before you fly.</h2>
 <p style="margin: 0; color: #36535F">Most of the planning happens on WhatsApp, so your days here stay a holiday.</p>
@@ -251,12 +288,19 @@ Book on WhatsApp
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Inside the clinic</h2>
 <p style="margin: 0; color: #4A6572">Private treatment rooms and a quiet waiting area. The clinic is in the city centre, in El Dahar on El Nasr Street.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 18px">
-<img loading="lazy" src="images/reception.jpg" alt="WhityBay reception desk and waiting chairs" style="flex: 1 1 200px; min-width: 0; width: 100%; height: 260px; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/logo-wall.jpg" alt="WhityBay logo on the reception wall" style="flex: 1 1 200px; min-width: 0; width: 100%; height: 260px; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/room-blue.jpg" alt="Treatment room with dental chair" style="flex: 1 1 200px; min-width: 0; width: 100%; height: 260px; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/waiting-area.jpg" alt="Waiting area with sofa" style="flex: 1 1 200px; min-width: 0; width: 100%; height: 260px; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/room-green.jpg" alt="Second treatment room" style="flex: 1 1 200px; min-width: 0; width: 100%; height: 260px; object-fit: cover; border-radius: 16px; display: block">
+<div class="mq" dir="ltr">
+<div class="mq-track">
+<img loading="lazy" src="images/reception.jpg" alt="WhityBay reception desk and waiting chairs">
+<img loading="lazy" src="images/logo-wall.jpg" alt="WhityBay logo on the reception wall">
+<img loading="lazy" src="images/room-blue.jpg" alt="Treatment room with dental chair">
+<img loading="lazy" src="images/waiting-area.jpg" alt="Waiting area with sofa">
+<img loading="lazy" src="images/room-green.jpg" alt="Second treatment room">
+<img loading="lazy" src="images/reception.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/logo-wall.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/room-blue.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/waiting-area.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/room-green.jpg" alt="" aria-hidden="true">
+</div>
 </div>
 </section>
 
@@ -265,52 +309,66 @@ Book on WhatsApp
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Our patients</h2>
 <p style="margin: 0; color: #4A6572">Hurghada residents and holiday visitors with Dr. Moustafa at the clinic.</p>
 </div>
-<div class="pt-grid">
-<img loading="lazy" src="images/patient-1.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-2.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-3.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-4.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-5.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-6.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-7.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
-<img loading="lazy" src="images/patient-8.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
+<div class="mq" dir="ltr">
+<div class="mq-track mq-long">
+<img loading="lazy" src="images/patient-1.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-2.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-3.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-4.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-5.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-6.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-7.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-8.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay">
+<img loading="lazy" src="images/patient-1.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-2.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-3.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-4.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-5.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-6.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-7.jpg" alt="" aria-hidden="true">
+<img loading="lazy" src="images/patient-8.jpg" alt="" aria-hidden="true">
+</div>
 </div>
 </section>
 
 <section id="before-after" style="max-width: 1180px; margin: 0 auto; padding: 0 24px 72px; display: flex; flex-direction: column; gap: 28px">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Real results. Drag to compare.</h2>
-<p style="margin: 0; color: #4A6572">Photos from Dr. Moustafa's own cases at WhityBay.</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Before and after</h2>
+<p style="margin: 0; color: #4A6572">Photos from Dr. Moustafa's own cases at WhityBay. Tap Before or After to switch.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
-<figure style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
-<div class="ba" dir="ltr" style="--p: 50%; aspect-ratio: 2 / 1">
-<img loading="lazy" src="images/result-ba1-before.jpg" alt="Before: a small lower front tooth">
+<article style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="ba" data-state="after" style="aspect-ratio: 3 / 2">
+<img loading="lazy" class="ba-before ba-blur" src="images/result-ba1-before.jpg" alt="" aria-hidden="true">
+<img loading="lazy" class="ba-after ba-blur" src="images/result-ba1-after.jpg" alt="" aria-hidden="true">
+<img loading="lazy" class="ba-before" src="images/result-ba1-before.jpg" alt="Before: a small lower front tooth">
 <img loading="lazy" class="ba-after" src="images/result-ba1-after.jpg" alt="After: the tooth rebuilt to full size">
-<span class="ba-tag" style="left: 12px">Before</span>
-<span class="ba-tag" style="right: 12px">After</span>
-<span class="ba-line" aria-hidden="true"><span class="ba-knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></span>
-<input class="ba-r" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+<div class="ba-switch" role="group">
+<button type="button" data-show="before" aria-pressed="false">Before</button>
+<button type="button" data-show="after" aria-pressed="true" class="on">After</button>
 </div>
-<figcaption style="display: flex; flex-direction: column; gap: 4px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">A small lower tooth rebuilt in 20 minutes</span>
 <span style="color: #4A6572; font-size: 15px">One visit, during orthodontic treatment.</span>
-</figcaption>
-</figure>
-<figure style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
-<div class="ba" dir="ltr" style="--p: 50%; aspect-ratio: 10 / 3">
-<img loading="lazy" src="images/result-ba2-before.jpg" alt="Before: worn and stained lower front teeth">
-<img loading="lazy" class="ba-after" src="images/result-ba2-after.jpg" alt="After: lower front teeth restored">
-<span class="ba-tag" style="left: 12px">Before</span>
-<span class="ba-tag" style="right: 12px">After</span>
-<span class="ba-line" aria-hidden="true"><span class="ba-knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></span>
-<input class="ba-r" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
 </div>
-<figcaption style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Worn, stained lower front teeth restored</span>
-<span style="color: #4A6572; font-size: 15px">Shape and colour rebuilt.</span>
-</figcaption>
-</figure>
+</article>
+<article style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="ba" data-state="after" style="aspect-ratio: 3 / 2">
+<img loading="lazy" class="ba-before ba-blur" src="images/result-ba3-before.jpg" alt="" aria-hidden="true">
+<img loading="lazy" class="ba-after ba-blur" src="images/result-ba3-after.jpg" alt="" aria-hidden="true">
+<img loading="lazy" class="ba-before" src="images/result-ba3-before.jpg" alt="Before: worn, uneven and discoloured front teeth">
+<img loading="lazy" class="ba-after" src="images/result-ba3-after.jpg" alt="After: the new smile two years after treatment">
+<div class="ba-switch" role="group">
+<button type="button" data-show="before" aria-pressed="false">Before</button>
+<button type="button" data-show="after" aria-pressed="true" class="on">After</button>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Full smile makeover, 2 years later</span>
+<span style="color: #4A6572; font-size: 15px">Worn, uneven teeth before, and the same smile two years after treatment.</span>
+</div>
+</article>
 </div>
 </section>
 
@@ -465,10 +523,9 @@ Send on WhatsApp
 
 <footer style="background: #0B2A3A; color: #D5E4E8; font-size: 14px">
 <div style="max-width: 1180px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px">
-<span style="display: flex; flex-direction: column; gap: 10px"><img loading="lazy" src="images/logo-white.png" alt="WhityBay" style="height: 44px; width: auto; display: block; align-self: flex-start">© 2026 WhityBay Digital Dental Center, Hurghada</span>
+<span style="display: flex; flex-direction: column; gap: 10px"><img loading="lazy" src="images/logo-white.png" alt="WhityBay" style="height: 64px; width: auto; display: block; align-self: flex-start">© 2026 WhityBay Digital Dental Center, Hurghada</span>
 <span style="display: flex; flex-wrap: wrap; gap: 8px 20px">
 <a href="https://www.facebook.com/whitybay/" style="color: #FFFFFF">Facebook</a>
-<a href="https://www.facebook.com/whitybayzahnklinik/" style="color: #FFFFFF">Deutsch</a>
 <a href="https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry" style="color: #FFFFFF">Vezeeta</a>
 </span>
 </div>
@@ -477,9 +534,63 @@ Send on WhatsApp
 </div>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20book%20an%20appointment.%20My%20name%20is%20%E2%80%A6%20and%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" aria-label="Chat on WhatsApp" style="position: fixed; right: 18px; bottom: 18px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #06281B; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.28)"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"></path></svg></a>
 <script>
-document.querySelectorAll('.ba-r').forEach(function (r) {
-  r.addEventListener('input', function () { r.parentNode.style.setProperty('--p', r.value + '%'); });
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.ba-switch button');
+  if (!b) return;
+  var ba = b.closest('.ba');
+  ba.dataset.state = b.dataset.show;
+  ba.querySelectorAll('.ba-switch button').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
 });
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      var el = en.target, raw = el.textContent, m = raw.match(/\d[\d.,\u00a0 ]*\d|\d/);
+      if (!m) return;
+      var sep = m[0].replace(/\d/g, '').charAt(0), target = parseInt(m[0].replace(/\D/g, ''), 10), t0 = performance.now();
+      var fmt = function (v) { var s = String(v); return sep && v >= 1000 ? s.slice(0, -3) + sep + s.slice(-3) : s; };
+      var step = function (now) {
+        var k = Math.min(1, (now - t0) / 1200), v = Math.round(target * (1 - Math.pow(1 - k, 3)));
+        el.textContent = raw.replace(m[0], fmt(v));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: .6 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+(function () {
+  var box = document.getElementById('doctor');
+  if (!box || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = [].slice.call(box.querySelectorAll('h2, p, li'));
+  var st = document.createElement('style');
+  st.textContent = '.tw-off{color:transparent}.tw-caret{display:inline-block;width:2px;height:1em;margin:0 1px;vertical-align:-0.12em;background:#F2C879;animation:twb .7s steps(1) infinite}@keyframes twb{50%{opacity:0}}';
+  document.head.appendChild(st);
+  var parts = els.map(function (el) {
+    var t = el.textContent, on = document.createElement('span'), off = document.createElement('span');
+    off.className = 'tw-off'; off.textContent = t; el.textContent = ''; el.appendChild(on); el.appendChild(off);
+    return { el: el, t: t, on: on, off: off };
+  });
+  var caret = document.createElement('span'); caret.className = 'tw-caret'; caret.setAttribute('aria-hidden', 'true');
+  var io = new IntersectionObserver(function (en) {
+    if (!en[0].isIntersecting) return;
+    io.disconnect();
+    var i = 0, n = 0;
+    var tick = function () {
+      var p = parts[i];
+      if (!p) { caret.remove(); return; }
+      if (n === 0) p.el.insertBefore(caret, p.off);
+      n = Math.min(p.t.length, n + 3);
+      p.on.textContent = p.t.slice(0, n); p.off.textContent = p.t.slice(n);
+      if (n >= p.t.length) { i++; n = 0; setTimeout(tick, 120); } else setTimeout(tick, 16);
+    };
+    tick();
+  }, { threshold: .35 });
+  io.observe(box);
+})();
 (function () {
   var f = document.getElementById('wa-form'), b = document.getElementById('wa-send');
   if (!f || !b) return;
