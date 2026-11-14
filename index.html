@@ -39,9 +39,34 @@ a{color:#1F4E8C}a:hover{color:#163B6B}
 .slides span:nth-child(2){animation-delay:6s}.slides span:nth-child(3){animation-delay:12s}.slides span:nth-child(4){animation-delay:18s}.slides span:nth-child(5){animation-delay:24s}
 .slides::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,42,58,.84),rgba(11,42,58,.78))}
 @keyframes wbfade{0%{opacity:0}8%{opacity:1}24%{opacity:1}32%{opacity:0}100%{opacity:0}}
+.ba{position:relative;overflow:hidden;border-radius:16px;background:#0B2A3A;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba .ba-after{clip-path:inset(0 0 0 var(--p))}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--p);width:3px;margin-left:-1.5px;background:#FFFFFF;pointer-events:none}
+.ba-knob{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#FFFFFF;color:#0B2A3A;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.35)}
+.ba-tag{position:absolute;top:12px;padding:5px 12px;border-radius:999px;background:rgba(11,42,58,.82);color:#FFFFFF;font-size:13px;font-weight:600;pointer-events:none}
+.ba-r{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba:focus-within .ba-knob{outline:3px solid #F2C879;outline-offset:2px}
+.faq{background:#FFFFFF;border:1px solid #DCE7EA;border-radius:14px;padding:0 22px}
+.faq summary{cursor:pointer;padding:18px 0;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;line-height:1;color:#1F4E8C;flex:none}
+.faq[open] summary::after{content:"\2013"}
+.faq p{margin:0 0 20px;color:#4A6572}
+.chip{position:relative;display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.45);color:#FFFFFF;font-size:15px;font-weight:500;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip:has(input:checked){background:#25D366;border-color:#25D366;color:#06281B}
+.chip:has(input:focus-visible){outline:3px solid #F2C879;outline-offset:2px}
+.wf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.wf-row{grid-template-columns:1fr}}
+.wf-f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#D5E4E8;min-width:0}
+.wf-f input,.wf-f textarea{box-sizing:border-box;width:100%;min-height:46px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#FFFFFF;font:inherit;font-size:16px}
+.wf-f textarea{min-height:76px;resize:vertical}
+.wf-f input:focus,.wf-f textarea:focus{outline:3px solid #F2C879;outline-offset:1px}
 @media(prefers-reduced-motion:reduce){.slides span{animation:none}.slides span:first-child{opacity:1}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "WhityBay Digital Dental Center", "url": "https://whitybay.com/", "image": "https://whitybay.com/images/reception.jpg", "logo": "https://whitybay.com/images/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "El Nasr Street, El Dahar, above Anbar Pharmacy, 2nd floor", "addressLocality": "Hurghada", "addressRegion": "Red Sea", "addressCountry": "EG"}, "founder": {"@type": "Person", "name": "Dr. Moustafa Shaaban"}, "sameAs": ["https://www.facebook.com/whitybay/", "https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "WhityBay Digital Dental Center", "url": "https://whitybay.com/", "image": "https://whitybay.com/images/reception.jpg", "logo": "https://whitybay.com/images/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "El Nasr Street, El Dahar, above Anbar Pharmacy, 2nd floor", "addressLocality": "Hurghada", "addressRegion": "Red Sea", "addressCountry": "EG"}, "founder": {"@type": "Person", "name": "Dr. Moustafa Shaaban"}, "sameAs": ["https://www.facebook.com/whitybay/", "https://www.facebook.com/whitybayzahnklinik/", "https://www.tiktok.com/@drmoustafash", "https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you speak English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Dr. Moustafa and the team reply in English and Arabic, on WhatsApp and at the clinic."}}, {"@type": "Question", "name": "Can I be treated during a one- or two-week holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Whitening, cleaning, fillings and root canals usually take one or two visits. Veneers, crowns and implants need more visits, so send your dates first and Dr. Moustafa will tell you what fits."}}, {"@type": "Question", "name": "How do I get a price before I travel?", "acceptedAnswer": {"@type": "Answer", "text": "Send a photo of your smile or a recent X-ray on WhatsApp. You get a treatment plan and a price for your case."}}, {"@type": "Question", "name": "What if I get a toothache on holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Message us on WhatsApp with where it hurts and your hotel. We give you the earliest appointment we have."}}, {"@type": "Question", "name": "Where is the clinic?", "acceptedAnswer": {"@type": "Answer", "text": "In the city centre: El Nasr Street, El Dahar, 2nd floor above Anbar Pharmacy. Help with transfers is also possible."}}, {"@type": "Question", "name": "How do I book?", "acceptedAnswer": {"@type": "Answer", "text": "On WhatsApp only. Tap any green button or fill in the short form below, and we reply with a time."}}]}</script>
 </head>
 <body>
 <div style="font-family: Inter, system-ui, sans-serif; color: #0B2A3A; background: #F4F8F9; font-size: 17px; line-height: 1.55">
@@ -55,6 +80,7 @@ a{color:#1F4E8C}a:hover{color:#163B6B}
 <a href="#treatments" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Treatments</a>
 <a href="#holiday" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">On holiday</a>
 <a href="#doctor" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Your dentist</a>
+<a href="#before-after" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Results</a>
 <a href="#reviews" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Reviews</a>
 <a href="#find-us" style="color: #0B2A3A; text-decoration: none; padding: 12px 0">Find us</a>
 </nav>
@@ -76,6 +102,10 @@ Book on WhatsApp
 <div class="slides" aria-hidden="true"><span style="background-image: url(images/hurghada-aerial.jpg)"></span><span style="background-image: url(images/hurghada-seafront.jpg)"></span><span style="background-image: url(images/hurghada-beach.jpg)"></span><span style="background-image: url(images/red-sea-reef.jpg)"></span><span style="background-image: url(images/red-sea-sunset.jpg)"></span></div>
 <div style="position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 72px 24px 80px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
 <div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid #F2C879; background: rgba(242,200,121,.12); color: #F2C879; font-size: 14px; font-weight: 600">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14 7 22l5-3 5 3-1.5-8"></path></svg>
+First certified clear-aligner orthodontist in Hurghada
+</span>
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #9CC4EA; font-weight: 600">Cosmetic &amp; general dentistry · El Dahar, Hurghada</p>
 <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(38px, 5.2vw, 62px); line-height: 1.05; letter-spacing: -0.025em">Your dentist in Hurghada, on holiday or at home.</h1>
 <p style="margin: 0; font-size: 19px; color: #D5E4E8; max-width: 560px">Toothache during your trip, or a new smile planned around it. Message Dr. Moustafa Shaaban's team on WhatsApp and get an appointment without forms or waiting on hold.</p>
@@ -86,14 +116,22 @@ Book on WhatsApp
 </a>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20have%20a%20dental%20emergency%20and%20need%20an%20appointment%20as%20soon%20as%20possible.%20I%20am%20staying%20at%20%E2%80%A6" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 26px; border-radius: 999px; border: 1.5px solid #9CC4EA; color: #FFFFFF; font-weight: 600; font-size: 18px; text-decoration: none">I have a toothache now</a>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 14px 36px; margin-top: 18px; padding-top: 24px; border-top: 1px solid #24485A">
+<div style="display: flex; flex-wrap: wrap; gap: 16px 36px; margin-top: 18px; padding-top: 24px; border-top: 1px solid #24485A">
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; color: #F2C879">5 / 5</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px; color: #F2C879">5 / 5</span>
 <span style="font-size: 14px; color: #D5E4E8">from 207 patients on Vezeeta</span>
 </div>
 <div style="display: flex; flex-direction: column">
-<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px">12+ years</span>
-<span style="font-size: 14px; color: #D5E4E8">orthodontic &amp; cosmetic experience</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">13 years</span>
+<span style="font-size: 14px; color: #D5E4E8">in practice</span>
+</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">4,700+</span>
+<span style="font-size: 14px; color: #D5E4E8">treated cases</span>
+</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px">530</span>
+<span style="font-size: 14px; color: #D5E4E8">courses &amp; trainings</span>
 </div>
 </div>
 </div>
@@ -196,12 +234,12 @@ Book on WhatsApp
 <div style="flex: 999 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #9CC4EA; font-weight: 600">Your dentist</p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Dr. Moustafa Shaaban</h2>
-<p style="margin: 0; color: #D5E4E8">Founder of WhityBay Digital Dental Center and a specialist in cosmetic dentistry and orthodontics, with more than 12 years of treatment planning behind every smile.</p>
+<p style="margin: 0; color: #D5E4E8">Founder of WhityBay Digital Dental Center and a specialist in cosmetic dentistry and orthodontics, with 13 years of practice and more than 4,700 treated cases.</p>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
 <li style="padding: 14px 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px">First certified clear-aligner orthodontist in Hurghada</li>
 <li style="padding: 14px 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px">Member of the American Academy of Cosmetic Dentistry</li>
 <li style="padding: 14px 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px">MFDS member · maxillofacial department staff, October 6 University</li>
-<li style="padding: 14px 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px">48+ courses in Digital Smile Design and modern dentofacial technology</li>
+<li style="padding: 14px 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 12px">530 courses and trainings, including Digital Smile Design and modern dentofacial technology</li>
 </ul>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20book%20an%20appointment.%20My%20name%20is%20%E2%80%A6%20and%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #25D366; color: #06281B; font-weight: 600; text-decoration: none">Book on WhatsApp</a>
 </div>
@@ -236,6 +274,43 @@ Book on WhatsApp
 <img loading="lazy" src="images/patient-6.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
 <img loading="lazy" src="images/patient-7.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
 <img loading="lazy" src="images/patient-8.jpg" alt="Dr. Moustafa Shaaban with a patient at WhityBay" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; display: block">
+</div>
+</section>
+
+<section id="before-after" style="max-width: 1180px; margin: 0 auto; padding: 0 24px 72px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Real results. Drag to compare.</h2>
+<p style="margin: 0; color: #4A6572">Photos from Dr. Moustafa's own cases at WhityBay.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<figure style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="ba" dir="ltr" style="--p: 50%; aspect-ratio: 2 / 1">
+<img loading="lazy" src="images/result-ba1-before.jpg" alt="Before: a small lower front tooth">
+<img loading="lazy" class="ba-after" src="images/result-ba1-after.jpg" alt="After: the tooth rebuilt to full size">
+<span class="ba-tag" style="left: 12px">Before</span>
+<span class="ba-tag" style="right: 12px">After</span>
+<span class="ba-line" aria-hidden="true"><span class="ba-knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></span>
+<input class="ba-r" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+</div>
+<figcaption style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">A small lower tooth rebuilt in 20 minutes</span>
+<span style="color: #4A6572; font-size: 15px">One visit, during orthodontic treatment.</span>
+</figcaption>
+</figure>
+<figure style="flex: 1 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="ba" dir="ltr" style="--p: 50%; aspect-ratio: 10 / 3">
+<img loading="lazy" src="images/result-ba2-before.jpg" alt="Before: worn and stained lower front teeth">
+<img loading="lazy" class="ba-after" src="images/result-ba2-after.jpg" alt="After: lower front teeth restored">
+<span class="ba-tag" style="left: 12px">Before</span>
+<span class="ba-tag" style="right: 12px">After</span>
+<span class="ba-line" aria-hidden="true"><span class="ba-knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></span>
+<input class="ba-r" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+</div>
+<figcaption style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Worn, stained lower front teeth restored</span>
+<span style="color: #4A6572; font-size: 15px">Shape and colour rebuilt.</span>
+</figcaption>
+</figure>
 </div>
 </section>
 
@@ -315,6 +390,36 @@ Book on WhatsApp
 </div>
 </section>
 
+<section id="faq" style="max-width: 860px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-direction: column; gap: 24px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Questions from visitors</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<details class="faq">
+<summary>Do you speak English?</summary>
+<p>Yes. Dr. Moustafa and the team reply in English and Arabic, on WhatsApp and at the clinic.</p>
+</details>
+<details class="faq">
+<summary>Can I be treated during a one- or two-week holiday?</summary>
+<p>Often, yes. Whitening, cleaning, fillings and root canals usually take one or two visits. Veneers, crowns and implants need more visits, so send your dates first and Dr. Moustafa will tell you what fits.</p>
+</details>
+<details class="faq">
+<summary>How do I get a price before I travel?</summary>
+<p>Send a photo of your smile or a recent X-ray on WhatsApp. You get a treatment plan and a price for your case.</p>
+</details>
+<details class="faq">
+<summary>What if I get a toothache on holiday?</summary>
+<p>Message us on WhatsApp with where it hurts and your hotel. We give you the earliest appointment we have.</p>
+</details>
+<details class="faq">
+<summary>Where is the clinic?</summary>
+<p>In the city centre: El Nasr Street, El Dahar, 2nd floor above Anbar Pharmacy. Help with transfers is also possible.</p>
+</details>
+<details class="faq">
+<summary>How do I book?</summary>
+<p>On WhatsApp only. Tap any green button or fill in the short form below, and we reply with a time.</p>
+</details>
+</div>
+</section>
+
 <section id="find-us" style="max-width: 1180px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 40px">
 <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em">Find us in El Dahar</h2>
@@ -330,10 +435,30 @@ Book on WhatsApp
 <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px">
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px; line-height: 1.15">Ready when you are.</h3>
 <p style="margin: 0; color: #D5E4E8">Send your name, what you need and the dates you are in Hurghada. We reply with a time.</p>
-<a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20book%20an%20appointment.%20My%20name%20is%20%E2%80%A6%20and%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #25D366; color: #06281B; font-weight: 600; font-size: 18px; text-decoration: none">
+<form id="wa-form" data-hello="Hello WhityBay, I would like to book an appointment." data-for="Treatment" data-name="Name" data-country="Country" data-dates="Dates in Hurghada" data-note="Note" style="display: flex; flex-direction: column; gap: 16px; margin: 0">
+<fieldset style="border: 0; margin: 0; padding: 0; min-width: 0">
+<legend style="padding: 0; margin-bottom: 10px; font-weight: 600; font-size: 15px">What do you need?</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<label class="chip"><input type="checkbox" name="t" value="veneers / Hollywood smile">Veneers</label>
+<label class="chip"><input type="checkbox" name="t" value="implants">Implants</label>
+<label class="chip"><input type="checkbox" name="t" value="clear aligners">Clear aligners</label>
+<label class="chip"><input type="checkbox" name="t" value="whitening">Whitening</label>
+<label class="chip"><input type="checkbox" name="t" value="root canal / filling">Root canal / filling</label>
+<label class="chip"><input type="checkbox" name="t" value="cleaning">Cleaning</label>
+<label class="chip"><input type="checkbox" name="t" value="toothache now">Toothache now</label>
+</div>
+</fieldset>
+<div class="wf-row">
+<label class="wf-f">Your name<input type="text" name="wb-name" autocomplete="name"></label>
+<label class="wf-f">Country<input type="text" name="wb-country" autocomplete="country-name"></label>
+</div>
+<label class="wf-f">Your dates in Hurghada<input type="text" name="wb-dates"></label>
+<label class="wf-f">Anything else? (optional)<textarea name="wb-note" rows="2"></textarea></label>
+<a id="wa-send" href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20book%20an%20appointment.%20My%20name%20is%20%E2%80%A6%20and%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #25D366; color: #06281B; font-weight: 600; font-size: 18px; text-decoration: none">
 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"></path></svg>
-Book on WhatsApp
+Send on WhatsApp
 </a>
+</form>
 </div>
 </div>
 </section>
@@ -351,5 +476,27 @@ Book on WhatsApp
 
 </div>
 <a href="https://wa.me/201005432022?text=Hello%20WhityBay%2C%20I%20would%20like%20to%20book%20an%20appointment.%20My%20name%20is%20%E2%80%A6%20and%20I%20am%20in%20Hurghada%20from%20%E2%80%A6%20to%20%E2%80%A6" aria-label="Chat on WhatsApp" style="position: fixed; right: 18px; bottom: 18px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: #25D366; color: #06281B; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.28)"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"></path></svg></a>
+<script>
+document.querySelectorAll('.ba-r').forEach(function (r) {
+  r.addEventListener('input', function () { r.parentNode.style.setProperty('--p', r.value + '%'); });
+});
+(function () {
+  var f = document.getElementById('wa-form'), b = document.getElementById('wa-send');
+  if (!f || !b) return;
+  b.addEventListener('click', function (e) {
+    var d = f.dataset, L = [d.hello], t = [];
+    f.querySelectorAll('input[name=t]:checked').forEach(function (c) { t.push(c.value); });
+    var v = function (n) { return f.elements[n].value.trim(); };
+    if (t.length) L.push(d.for + ': ' + t.join(', '));
+    if (v('wb-name')) L.push(d.name + ': ' + v('wb-name'));
+    if (v('wb-country')) L.push(d.country + ': ' + v('wb-country'));
+    if (v('wb-dates')) L.push(d.dates + ': ' + v('wb-dates'));
+    if (v('wb-note')) L.push(d.note + ': ' + v('wb-note'));
+    if (L.length === 1) return;
+    e.preventDefault();
+    window.open('https://wa.me/201005432022?text=' + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+  });
+})();
+</script>
 </body>
 </html>
