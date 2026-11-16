@@ -103,6 +103,8 @@ header nav + div{margin-inline-start:auto}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "WhityBay Digital Dental Center", "url": "https://whitybay.com/", "image": "https://whitybay.com/images/reception.jpg", "logo": "https://whitybay.com/images/logo.png", "address": {"@type": "PostalAddress", "streetAddress": "El Nasr Street, El Dahar, above Anbar Pharmacy, 2nd floor", "addressLocality": "Hurghada", "addressRegion": "Red Sea", "addressCountry": "EG"}, "founder": {"@type": "Person", "name": "Dr. Moustafa Shaaban"}, "sameAs": ["https://www.facebook.com/whitybay/", "https://www.tiktok.com/@drmoustafash", "https://www.vezeeta.com/en/dr/doctor-moustafa--shaaban--dentistry"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you speak English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Dr. Moustafa and the team reply in English and Arabic, on WhatsApp and at the clinic."}}, {"@type": "Question", "name": "Can I be treated during a one- or two-week holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Whitening, cleaning, fillings and root canals usually take one or two visits. Veneers, crowns and implants need more visits, so send your dates first and Dr. Moustafa will tell you what fits."}}, {"@type": "Question", "name": "How do I get a price before I travel?", "acceptedAnswer": {"@type": "Answer", "text": "Send a photo of your smile or a recent X-ray on WhatsApp. You get a treatment plan and a price for your case."}}, {"@type": "Question", "name": "What if I get a toothache on holiday?", "acceptedAnswer": {"@type": "Answer", "text": "Message us on WhatsApp with where it hurts and your hotel. We give you the earliest appointment we have."}}, {"@type": "Question", "name": "Where is the clinic?", "acceptedAnswer": {"@type": "Answer", "text": "In the city centre: El Nasr Street, El Dahar, 2nd floor above Anbar Pharmacy. Help with transfers is also possible."}}, {"@type": "Question", "name": "How do I book?", "acceptedAnswer": {"@type": "Answer", "text": "On WhatsApp only. Tap any green button or fill in the short form below, and we reply with a time."}}]}</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});try{if(localStorage.getItem('wb-consent')==='yes'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}gtag('js',new Date());gtag('config','G-2KGDSK9GZE');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2KGDSK9GZE"></script>
 </head>
 <body>
 <div style="font-family: Inter, system-ui, sans-serif; color: #0B2A3A; background: #F4F8F9; font-size: 17px; line-height: 1.55">
@@ -606,6 +608,29 @@ document.addEventListener('click', function (e) {
     if (L.length === 1) return;
     e.preventDefault();
     window.open('https://wa.me/201005432022?text=' + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+  });
+})();
+</script>
+<div id="wb-consent" role="dialog" aria-label="Cookies" style="display: none; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; max-width: 720px; margin: 0 auto; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding: 16px 18px; border-radius: 16px; background: #0B2A3A; color: #FFFFFF; font-family: Inter, system-ui, sans-serif; font-size: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.35)"><p style="margin: 0; flex: 1 1 280px">We use cookies to count visits and see which ads bring patients to us. Is that OK?</p><div style="display: flex; gap: 10px"><button type="button" data-consent="no" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.5); background: transparent; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Decline</button><button type="button" data-consent="yes" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 0; background: #25D366; color: #06281B; font: inherit; font-weight: 600; cursor: pointer">Accept</button></div></div>
+<script>
+(function () {
+  var b = document.getElementById('wb-consent'), saved = null;
+  try { saved = localStorage.getItem('wb-consent'); } catch (e) {}
+  if (b && !saved) b.style.display = 'flex';
+  if (b) b.addEventListener('click', function (e) {
+    var k = e.target.closest('[data-consent]');
+    if (!k) return;
+    var ok = k.dataset.consent === 'yes';
+    try { localStorage.setItem('wb-consent', ok ? 'yes' : 'no'); } catch (e2) {}
+    if (ok) gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+    b.style.display = 'none';
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="wa.me"], #wa-send');
+    if (!a) return;
+    var where = a.closest('header') ? 'header' : a.closest('footer') ? 'footer' : (a.closest('section') || {}).id || 'floating_button';
+    gtag('event', 'whatsapp_click', { link_location: where, page_language: document.documentElement.lang });
+    
   });
 })();
 </script>
